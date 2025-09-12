@@ -1,13 +1,12 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET"])
+@app.route("/")
 def home():
-    return "Welcome to the Home Page!"
+    return render_template('index.html')
 
-
-if __name__ == "__main__":
+if __name__ == '_main__':
     app.run(debug=True)
 
 
