@@ -5,3 +5,5 @@ proyecto en github se enlaza con el usuario y contraseña asignados
 Para el calculo de numeros multidimensionales se utiliza la libreria numpy
 pip install numpy as np
 
+tambien se requiere instalar virutalenv
+pip install virtualenv
