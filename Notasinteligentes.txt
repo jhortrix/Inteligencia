@@ -12,3 +12,8 @@ pip install virtualenv
 En este ejemplo se utiliza
 
 Mision -> Vision    
+
+
+
+creamos un nuevo frot end "respuesta"
+donde mostraremos respuesta registro creado existosamente
