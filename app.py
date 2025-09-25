@@ -55,15 +55,23 @@ def listacarrera():
     return render_template('listacarrera.html', carrera=carreras)
 
 @app.route("/listacarrera", methods=['POST'])
-def eliminar():
-    if request.method == 'POST':
-        skill = request.form['skill']
+def novedad():
         conex = db.get_db_connection()
-        conex.execute('DELETE FROM user WHERE skill = ?', (skill,))
-        carreras = conex.execute('SELECT * FROM user').fetchall()
-        conex.commit()
-        conex.close()
-        return render_template('listacarrera.html', alerta="Carrera eliminada exitosamente", carrera=carreras) # puedo agregar un alert con codigo js
+        if request.form.get("act"):
+            skill = request.form['dato']
+            act = request.form['act']
+            conex.execute('UPDATE user SET description = ? WHERE skill = ?', (act, skill))
+            carreras = conex.execute('SELECT * FROM user').fetchall()
+            conex.commit()
+            conex.close()
+            return render_template('listacarrera.html', alerta="Carrera actualizada exitosamente", carrera=carreras) # puedo agregar un alert con codigo js
+        else:
+            skill = request.form['dato']
+            conex.execute('DELETE FROM user WHERE skill = ?', (skill,))
+            carreras = conex.execute('SELECT * FROM user').fetchall()
+            conex.commit()
+            conex.close()            
+            return render_template('listacarrera.html', alerta="Carrera eliminada exitosamente", carrera=carreras) # puedo agregar un alert con codigo js
 
 
 
